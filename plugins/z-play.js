@@ -78,7 +78,7 @@ let handler = async (m, { conn, text, usedPrefix }) => {
 handler.command = handler.help = ['play', 'ds', 'song'];
 handler.tags = ['downloader'];
 handler.exp = 0;
-handler.limit = 3;
+handler.limit = 50;
 handler.private = false;
 
 module.exports = handler;
