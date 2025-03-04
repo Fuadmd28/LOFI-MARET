@@ -16,7 +16,7 @@ global.wait = '_*Tunggu sedang di proses...*_'
 global.eror = '_*Server Error*_'
 global.stiker_wait = '*⫹⫺ Stiker sedang dibuat...*'
 global.packname = 'Made With'
-global.author = 'kazuhikomc'
+global.author = '𝙇𝙊𝙁𝙄 𝙄𝙈𝙐𝙏𝙏'
 global.maxwarn = '2' // Peringatan maksimum
 
 //INI WAJIB DI ISI!//
