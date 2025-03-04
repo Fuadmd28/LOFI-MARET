@@ -3,7 +3,7 @@ global.mods = ['6282147781510']
 global.prems = ['.']
 global.nameowner = 'YTTA'
 global.numberowner = '6282147781510'
-global.nomorown = '6282147781510'
+global.nomorown = '6285717058575'
 global.sgc = 'nekopoi.care'
 global.namebot = '© 𝙇𝙊𝙁𝙄 𝙄𝙈𝙐𝙏𝙏 v5.0.3 (Public Bot)'
 global.mail = 'support@tioprm.eu.org' 
@@ -16,7 +16,7 @@ global.wait = '_*Tunggu sedang di proses...*_'
 global.eror = '_*Server Error*_'
 global.stiker_wait = '*⫹⫺ Stiker sedang dibuat...*'
 global.packname = 'Made With'
-global.author = '𝙇𝙊𝙁𝙄 𝙄𝙈𝙐𝙏𝙏'
+global.author = 'abill own natuz🕸️'
 global.maxwarn = '2' // Peringatan maksimum
 
 //INI WAJIB DI ISI!//
