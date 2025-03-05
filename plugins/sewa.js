@@ -7,7 +7,7 @@ let text = `*_🟢 Open Sewa Bot WhatsApp_*
 - *Rp 35,000* _Permanen_
 
  *Jika minat/mau tanya ² 👤*
- https://wa.me/6281932471151`
+ https://wa.me/6282147781510`
 conn.sendFile(m.chat, 'https://files.catbox.moe/p452f2.jpg', '', text, m)
 }
 handler.help = ['sewa']
