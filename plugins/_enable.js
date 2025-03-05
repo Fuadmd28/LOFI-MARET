@@ -213,11 +213,7 @@ List option:
 | document
 | whitelistmycontacts
 | restrict
-| nyimak
 | autoread
-| pconly
-| gconly
-| swonly
 Contoh:
 ${usedPrefix}enable welcome
 ${usedPrefix}disable welcome
