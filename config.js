@@ -8,15 +8,15 @@ global.sgc = 'nekopoi.care'
 global.namebot = '© 𝙇𝙊𝙁𝙄 𝙄𝙈𝙐𝙏𝙏 v5.0.3 (Public Bot)'
 global.mail = 'support@tioprm.eu.org' 
 global.gc = 'https://chat.whatsapp.com/JZr68dt7KlEKiJuvEmWxoX'
-global.fotomu = 'https://i.supa.codes/2M79cm'
+global.fotomu = 'https://i.supa.codes/go0EEz'
 global.menu = 'https://btch.pages.dev/file/ea9a7ed7ad210811c90ff.jpg' //image menu , but not work 
 global.instagram = 'https://instagram.com/erlanrahmat_14'
-global.wm = '© alXcaca'
+global.wm = '© ziaavybot'
 global.wait = '_*Tunggu sedang di proses...*_'
 global.eror = '_*Server Error*_'
 global.stiker_wait = '*⫹⫺ Stiker sedang dibuat...*'
 global.packname = 'Made With'
-global.author = 'alXcaca'
+global.author = 'ziaavybot'
 global.maxwarn = '2' // Peringatan maksimum
 
 //INI WAJIB DI ISI!//
