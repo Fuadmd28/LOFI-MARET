@@ -1,41 +1,47 @@
-const fetch = require('node-fetch');
+/*
+Jangan Hapus Wm Bang 
 
-let handler = async (m, { conn, args, usedPrefix, command }) => {
-    if (!args[0]) {
-        throw `Masukan URL!\n\ncontoh:\n${usedPrefix + command} https://www.capcut.com/template-detail/7273798219329441025?template_id=7273798219329441025&share_token=1ea9b68c-aa1b-4fc4-86c2-bf2b9136b6e0&enter_from=template_detail&region=ID&language=in&platform=copy_link&is_copy_link=1`;
+*Download CC Plugins Esm*
+
+No Wm Kyk nya Yang Penting Gak Nabrak CH Lain Nanti :)
+
+*[Sumber]*
+https://whatsapp.com/channel/0029Vb3u2awADTOCXVsvia28
+
+*[Sumber Scrape]*
+
+https://whatsapp.com/channel/0029VafnytH2kNFsEp5R8Q3n/274
+*/
+
+const axios = require('axios');
+
+async function capcut(url) {
+  let { data } = await axios.post('https://3bic.com/api/download', { url }, {
+    headers: {
+      "content-type": "application/json",
+      "origin": "https://3bic.com",
+      "referer": "https://3bic.com/",
+      "user-agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Mobile Safari/537.36"
     }
+  });
+  data.originalVideoUrl = 'https://3bic.com' + data.originalVideoUrl;
+  return data;
+}
 
-    try {
-        if (!args[0].match(/capcut/gi)) {
-            throw `URL Tidak Ditemukan!`;
-        }
-        m.reply('*Mohon tunggu..*');
-
-        const response = await fetch(`https://api.betabotz.eu.org/api/download/capcut?url=${args[0]}&apikey=${lann}`);
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const res = await response.json();
-        const { 
-            video_ori, 
-            title, 
-            digunakan,
-            cover,
-            author_profile
-        } = res.result;
-
-        await conn.sendFile(m.chat, video_ori, 'capcut.mp4', `Title: ${title}\nDigunakan: ${digunakan}\nThumbnail: ${cover}\nProfile: ${author_profile}`, m);
-
-    } catch (e) {
-        console.log(e);
-        throw `Terjadi Kesalahan!`;
-    }
+let handler = async (m, { args, conn }) => {
+  if (!args[0]) return m.reply('Masukkan link Cangcut Woi');
+  
+  try {
+    let res = await capcut(args[0]);
+    await conn.sendMessage(m.chat, { video: { url: res.originalVideoUrl } }, { quoted: m });
+  } catch (e) {
+    m.reply('Gagal mengambil video. Pastikan link valid atau coba lagi nanti.');
+  }
 };
 
-handler.help = handler.command = ['capcut','cc','capcutdl','ccdl'];
-handler.tags = ['downloader'];
-handler.limit = true;
-handler.group = false;
+handler.help = ['capcut'];
+handler.command = ['capcut'];
+handler.tags = ['downloader']
+handler.limit = 5;
+
 module.exports = handler;
