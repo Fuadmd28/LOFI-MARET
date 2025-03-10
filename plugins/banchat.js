@@ -4,7 +4,7 @@ let handler = async (m, { conn, participants }) => {
     conn.reply(m.chat, 'Baiklah', m)
   // } else m.reply('There is a host number here...')
 }
-handler.command = /^banchat|botoff$/i
+handler.command = /^lofioff$/i
 handler.help = ['banchat','botoff']
 handler.tags = ['group']
 handler.admin = true
