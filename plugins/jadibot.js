@@ -5,7 +5,9 @@ let text = `*_🟢 Open Jadi Bot WhatsApp_*
 - *Rp 10,000* _30 Hari_
 - *Rp 20,000* _45 Hari_
 - *Rp 30,000* _60 Hari_
-- *Rp 95,000* _Permanen_
+- *Rp 40,000* _75 Hari_
+- *Rp 50,000* _90 Hari_
+- *Rp 96,000* _Permanen_
 
  *_Note 📌_*
 • Bisa Di Jual Kembali atau open sewa bot
@@ -18,6 +20,7 @@ let text = `*_🟢 Open Jadi Bot WhatsApp_*
 • Jika Eror Langsung Diperbaiki 
 • Tidak perlu 2 hp untuk terhubung ke bot, hanya masukan code saja *( Aman )*
 • Fresh Respon
+• Jadi Bot MD Fitur 500
 
  *_TESTIMONI 🛒🛍️_*
 https://wa.me/p/6331501620289183/6282147781510
