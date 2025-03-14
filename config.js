@@ -1,4 +1,4 @@
-global.owner = ['6282147781510']
+global.owner = ['6282147781510','6285936614926']
 global.mods = ['6282147781510'] 
 global.prems = ['.']
 global.nameowner = 'YTTA'
