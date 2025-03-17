@@ -1,9 +1,9 @@
-global.owner = ['6282147781510','6282210032884']
+global.owner = ['6282147781510','6282110698413']
 global.mods = ['6282147781510'] 
 global.prems = ['.']
 global.nameowner = 'YTTA'
 global.numberowner = '6282147781510'
-global.nomorown = '6282210032884'
+global.nomorown = '6282110698413'
 global.sgc = 'https://chat.whatsapp.com/DVU7tiH7qW6KXBJLea2k4U'
 global.namebot = '© 𝙇𝙊𝙁𝙄 𝙄𝙈𝙐𝙏𝙏 v5.0.3 (Public Bot)'
 global.mail = 'support@tioprm.eu.org' 
