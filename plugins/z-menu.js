@@ -188,6 +188,7 @@ conn.sendPresenceUpdate("composing", m.chat)
       capt += `│  •  ${_p + command} sticker\n`
       capt += `│  •  ${_p + command} tools\n`
       capt += `│  •  ${_p + command} anime\n`
+      capt += `│  •  .nokos\n`
       capt += `│  •  .sewa\n`
       capt += `│  •  .jadibot\n`
       capt += `╰  •  .premium\n\n`
