@@ -1,14 +1,14 @@
-global.owner = ['6282147781510','6281238391801']
+global.owner = ['6282147781510']
 global.mods = ['6282147781510'] 
 global.prems = ['.']
 global.nameowner = 'YTTA'
 global.numberowner = '6282147781510'
-global.nomorown = '6281238391801'
+global.nomorown = '6282147781510'
 global.sgc = 'nekopoi.care'
 global.namebot = '© 𝙇𝙊𝙁𝙄 𝙄𝙈𝙐𝙏𝙏 v5.0.3 (Public Bot)'
 global.mail = 'support@tioprm.eu.org' 
 global.gc = 'https://chat.whatsapp.com/JZr68dt7KlEKiJuvEmWxoX'
-global.fotomu = 'https://i.supa.codes/q2pKvk'
+global.fotomu = 'https://pomf2.lain.la/f/cjvxzxjo.jpg'
 global.menu = 'https://btch.pages.dev/file/ea9a7ed7ad210811c90ff.jpg' //image menu , but not work 
 global.instagram = 'https://instagram.com/erlanrahmat_14'
 global.wm = '© 𝙇𝙊𝙁𝙄 𝙄𝙈𝙐𝙏𝙏 💕'
