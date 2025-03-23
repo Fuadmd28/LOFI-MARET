@@ -40,7 +40,7 @@
     },
     "license": "MIT",
     "dependencies": {
-        "@adiwajshing/baileys": "npm:@whiskeysockets/baileys@6.7.8",
+        "@adiwajshing/baileys": "npm:@whiskeysockets/baileys@6.7.16",
         "@adiwajshing/keyed-db": "^0.2.4",
         "@bochilteam/scraper": "^3.0.0",
         "@google/generative-ai": "^0.21.0",
@@ -52,7 +52,6 @@
         "betabotz-tools": "*",
         "bing-translate-api": "^4.0.2",
         "btch-downloader": "*",
-        "canvas": "^2.11.2",
         "chalk": "^4.1.2",
         "cheerio": "^1.0.0-rc.12",
         "colors": "1.4.0",
