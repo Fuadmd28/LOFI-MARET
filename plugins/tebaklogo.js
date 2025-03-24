@@ -8,19 +8,19 @@ let handler = async (m, { conn, usedPrefix }) => {
     conn.reply(m.chat, 'Masih ada soal belum terjawab di chat ini', conn.tebaklogo[id][0])
     throw false
   }
-  if (!src) src = await (await fetch(`https://api.betabotz.eu.org/api/game/tebaklogo?apikey=${lann}`)).json()
+  if (!src) src = await (await fetch(`https://api.botcahx.eu.org/api/game/tebaklogo?apikey=${btc}`)).json()
   let json = src[Math.floor(Math.random() * src.length)]
   if (!json) throw "Terjadi kesalahan, ulangi lagi perintah!"
   let caption = `
-*GAME TEBAK LOGO 🟢*
+≡ _GAME TEBAK LOGO_
 
-*SOAL ❔*
-♐ Penjelasan: *${json.deskripsi}*
-⏰ Timeout *${(timeout / 1000).toFixed(2)} detik*
-🤫 Bonus: ${poin} money
-✨ Ketik ${usedPrefix}lgo untuk clue jawaban
-❗*REPLAY* pesan ini untuk\nmenjawab
-
+┌─⊷ *SOAL*
+▢ Penjelasan: *${json.deskripsi}*
+▢ Timeout *${(timeout / 1000).toFixed(2)} detik*
+▢ Bonus: ${poin} money
+▢ Ketik ${usedPrefix}lgo untuk clue jawaban
+▢ *REPLY* pesan ini untuk\nmenjawab
+└──────────────
 
     `.trim()
   conn.tebaklogo[id] = [
@@ -39,7 +39,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 handler.help = ['tebaklogo']
 handler.tags = ['game']
 handler.command = /^tebaklogo/i
-handler.limit = 4
-handler.group = true 
+handler.limit = 20
+handler.group = true
 
 module.exports = handler
