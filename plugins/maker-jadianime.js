@@ -1,34 +1,50 @@
-const uploadFile = require('../lib/uploadFile.js');
-const uploadImage = require('../lib/uploadImage.js');
+const uploadImage = require('../lib/uploadImage');
 const fetch = require('node-fetch');
 
-let handler = async function (m, { conn }) {
-  let q = m.quoted ? m.quoted : m;
-  let mime = (q.msg || q).mimetype || '';
-  
-  if (!mime) throw 'No media found';
-  
-  // Menampilkan pesan bahwa proses telah dimulai
-  await conn.sendMessage(m.chat, { text: 'Proses mengubah foto ke anime dimulai...' }, { quoted: m });
+let handler = async (m, { conn, usedPrefix, command }) => {
+    var q = m.quoted ? m.quoted : m;
+    var mime = (q.msg || q).mimetype || q.mediaType || '';
+    
+    if (/image/g.test(mime) && !/webp/g.test(mime)) {
+        await conn.reply(m.chat, "⏳ Sedang diproses...", m);
+        try {
+            const img = await q.download?.();
+            let out = await uploadImage(img);
+            let old = new Date();
+            
+            let res = await fetch(`https://api.botcahx.eu.org/api/maker/jadianime?url=${out}&apikey=${btc}`);
+            let convert = await res.json();
 
-  let media = await q.download();
-  let isTele = /image/.test(mime);
-  let link = await (isTele ? uploadImage : uploadFile)(media);
-  let ress = await fetch(`https://api.zenkey.my.id/api/maker/toanime?apikey=zenkey&url=${link}`);
-  
-  let tag = `@${m.sender.split("@")[0]}`;
-  let caption = `Nih effect *photo-to-anime* nya\nRequest by: ${tag}`;
-  
-  // Mengirim hasil kepada pengguna
-  await conn.sendMessage(m.chat, { image: ress, caption, mentions: [m.sender] }, { quoted: m });
+            if (!convert.result || !convert.result.img_1 || !convert.result.img_2) {
+                return m.reply("[ ! ] Gagal mendapatkan hasil.");
+            }
 
-  // Menampilkan pesan bahwa proses telah selesai
-  await conn.sendMessage(m.chat, { text: 'Proses selesai! Silakan lihat hasilnya.' }, { quoted: m });
+            let img1 = await fetch(convert.result.img_1).then(res => res.buffer());
+            let img2 = await fetch(convert.result.img_2).then(res => res.buffer());
+
+            await conn.sendMessage(m.chat, { 
+                image: img1, 
+                caption: `🍟 *Fetching:* ${((new Date() - old) * 1)} ms\n*Style:* Anime 2D` 
+            }, { quoted: m });
+
+            await conn.sendMessage(m.chat, { 
+                image: img2, 
+                caption: `🍟 *Fetching:* ${((new Date() - old) * 1)} ms\n*Style:* Anime 3D` 
+            }, { quoted: m });
+
+        } catch (e) {
+            console.error(e);
+            m.reply("[ ! ] Terjadi kesalahan saat memproses gambar.");
+        }
+    } else {
+        m.reply(`Kirim gambar dengan caption *${usedPrefix + command}* atau tag gambar yang sudah dikirim.`);
+    }
 };
 
-handler.help = ["jadianime","toanime"]
-handler.tags = ["ai","anime"];
-handler.premium = false
-handler.command = /^(jadianime|toanime)$/i;
+handler.help = ['jadianime'];
+handler.command = ['toanime', 'jadianime'];
+handler.tags = ['maker','anime'];
+handler.premium = false;
+handler.limit = 45;
 
 module.exports = handler;
