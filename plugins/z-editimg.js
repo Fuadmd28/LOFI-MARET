@@ -1,96 +1,107 @@
-/*
-Jangan Hapus Wm Bang 
+const uploadImage = require('../lib/uploadImage');
+const fetch = require("node-fetch");
+const axios = require("axios");
 
-*Edit Image  Plugins CJS*
+let handler = async (m, { 
+  conn, 
+  usedPrefix, 
+  command, 
+  args 
+}) => {
+  var q = m.quoted ? m.quoted : m;
+  var mime = (q.msg || q).mimetype || q.mediaType || '';
 
-Ya Gitu Gambar Nya Di Edit 
+  if (/image/g.test(mime) && !/webp/g.test(mime)) {
+    await conn.reply(m.chat, '🍟 *Processing...*', m);
+    try {
+      const img = await q.download?.();
+      let out = await uploadImage(img);
+      let old = new Date();
+      let apiUrl = '';
 
-*[Sumber]*
-https://whatsapp.com/channel/0029Vb3u2awADTOCXVsvia28
-
-*[Source Func]*
-
-https://whatsapp.com/channel/0029Vb9ZfML6GcGFm9aPgh0W/118
-*/
-
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-const fs = require("fs");
-const path = require("path");
-
-const handler = async (m, { conn, args, text, usedPrefix, command }) => {
-  let q = m.quoted ? m.quoted : m;
-  let mime = (q.msg || q).mimetype || "";
-  
-  if (!mime) return m.reply(`Kirim/reply gambar dengan caption *${usedPrefix + command}* prompt`);
-  if (!/image\/(jpe?g|png)/.test(mime)) return m.reply(`Format ${mime} tidak didukung! Hanya jpeg/jpg/png`);
-  if (!text) return m.reply(`Masukkan prompt yang jelas!\n\nContoh: *${usedPrefix + command}* ubah latar belakang menjadi pantai`);
-  
-  let promptText = text;
-  
-  m.reply("*Wait...*");
-  
-  try {
-    let imgData = await q.download();
-    let genAI = new GoogleGenerativeAI("AIzaSyDdfNNmvphdPdHSbIvpO5UkHdzBwx7NVm0");
-    
-    const base64Image = imgData.toString("base64");
-    
-    const contents = [
-      { text: promptText },
-      {
-        inlineData: {
-          mimeType: mime,
-          data: base64Image
+      if (command === 'todisney') {
+        apiUrl = `https://api.botcahx.eu.org/api/maker/jadidisney?url=${out}&apikey=${btc}`;
+      } else if (command === 'topixar') {
+        apiUrl = `https://api.botcahx.eu.org/api/maker/jadipixar?url=${out}&apikey=${btc}`;
+      } else if (command === 'tocartoon') {
+        apiUrl = `https://api.botcahx.eu.org/api/maker/jadicartoon?url=${out}&apikey=${btc}`;
+      } else if (command === 'tocyberpunk') {
+        apiUrl = `https://api.botcahx.eu.org/api/maker/jadicyberpunk?url=${out}&apikey=${btc}`;
+      } else if (command === 'tovangogh') {
+        apiUrl = `https://api.botcahx.eu.org/api/maker/jadivangogh?url=${out}&apikey=${btc}`;
+      } else if (command === 'topixelart') {
+        apiUrl = `https://api.botcahx.eu.org/api/maker/jadipixelart?url=${out}&apikey=${btc}`;
+      } else if (command === 'tocomicbook') {
+        apiUrl = `https://api.botcahx.eu.org/api/maker/jadicomicbook?url=${out}&apikey=${btc}`;
+      } else if (command === 'tohijab') {
+        apiUrl = `https://api.botcahx.eu.org/api/maker/jadihijab?url=${out}&apikey=${btc}`;
+      } else if (command === 'tohitam' || command === 'hitamkan' || command === 'hytamkan') {
+        apiUrl = `https://api.botcahx.eu.org/api/maker/jadihitam?url=${out}&apikey=${btc}`;
+      } else if (command === 'toputih') {
+        apiUrl = `https://api.botcahx.eu.org/api/maker/jadiputih?url=${out}&apikey=${btc}`;
+      } else if (command === 'toghibili') {
+        apiUrl = `https://api.botcahx.eu.org/api/maker/jadighibili?url=${out}&apikey=${btc}`;
+      } else if (command === 'imgedit') {
+        const text = args.join(" "); 
+        if (!text) {
+          return m.reply(`Please provide text for editing the image.`);
         }
+
+        let result = await imageedit(text, out);
+        let resultUrl = result.result;
+
+        await conn.sendMessage(m.chat, { 
+          image: { url: resultUrl },
+          caption: `🍟 *Fetching* : ${((new Date - old) * 1)} ms`
+        }, { quoted: m });
+        return;
+      } else {
+        return m.reply(`Command *${command}* not recognized. Please use a valid one.`);
       }
-    ];
-    
-    const model = genAI.getGenerativeModel({
-      model: "gemini-2.0-flash-exp-image-generation",
-      generationConfig: {
-        responseModalities: ["Text", "Image"]
-      },
-    });
-    
-    const response = await model.generateContent(contents);
-    
-    let resultImage;
-    let resultText = "";
-    
-    for (const part of response.response.candidates[0].content.parts) {
-      if (part.text) {
-        resultText += part.text;
-      } else if (part.inlineData) {
-        const imageData = part.inlineData.data;
-        resultImage = Buffer.from(imageData, "base64");
-      }
-    }
-    
-    if (resultImage) {
-      const tempPath = path.join(process.cwd(), "tmp", `gemini_${Date.now()}.png`);
-      fs.writeFileSync(tempPath, resultImage);
-      
+
+      let buff = await fetch(apiUrl).then(res => res.buffer());
       await conn.sendMessage(m.chat, { 
-        image: { url: tempPath },
+        image: buff, 
+        caption: `🍟 *Fetching* : ${((new Date - old) * 1)} ms`
       }, { quoted: m });
-      
-      setTimeout(() => {
-        try {
-          fs.unlinkSync(tempPath);
-        } catch {}
-      }, 30000);
-    } else {
-      m.reply("Gagal menghasilkan gambar.");
+
+    } catch (e) {
+      console.log(e);
+      m.reply(`[ ! ] Identifikasi Gagal.`)
     }
-  } catch (error) {
-    console.error(error);
-    m.reply(`Error: ${error.message}`);
+  } else {
+    m.reply(`Please send an image with caption *${usedPrefix + command}* or reply to an image.`);
   }
 };
 
-handler.help = ["editimg"];
-handler.tags = ["ai"];
-handler.premium = true 
-handler.command = ["editimg"];
+handler.help = ['todisney', 'topixar', 'tocartoon', 'tocyberpunk', 'tovangogh', 'topixelart', 'tocomicbook', 'tohijab', 'tohitam', 'hitamkan', 'hytamkan', 'toputih', 'toghibili', 'imgedit'];
+handler.command = ['todisney', 'topixar', 'tocartoon', 'tocyberpunk', 'tovangogh', 'topixelart', 'tocomicbook', 'tohijab', 'tohitam', 'hitamkan', 'hytamkan', 'toputih', 'toghibili', 'imgedit'];
+handler.tags = ['ai'];
+handler.premium = false;
+handler.limit = 15;
 
 module.exports = handler;
+
+/*
+ * @ CJS Image Edit Ai Use BOTCAHX Api
+ * @ Param {string} text - The text prompt for the image generation.
+ * @ Param {string} url - The URL of the image to be edited.
+ * @ Param {string} [apikey] - API key for authentication.
+ * @ Returns {Object} - { creator: string, result: string (URL) }
+ * @ Throws {Error} - If the image generation fails.
+ * @ Example Usage:
+ */
+
+async function imageedit(text, url) {
+  try {
+    const { data } = await axios.post("https://api.botcahx.eu.org/api/maker/imgedit", {
+      text: text,
+      url: url,
+      apikey: btc
+    });
+
+    return data;
+  } catch (error) {
+    throw null
+  };
+};
