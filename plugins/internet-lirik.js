@@ -36,7 +36,7 @@ ${data.result.lyrics}
 
 handler.help = ['lirik'].map(v => v + ' <Title>')
 handler.tags = ['internet']
-handler.limit = 10
+handler.limit = 5
 handler.command = /^(lirik|lyrics|lyric)$/i
 
 module.exports = handler
