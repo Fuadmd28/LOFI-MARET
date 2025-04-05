@@ -88,9 +88,9 @@ const handler = async (m, { conn, args, text, usedPrefix, command }) => {
   }
 };
 
-handler.help = ["imgedit"];
+handler.help = ["editimg"];
 handler.tags = ["ai"];
 handler.limit = 25 
-handler.command = ["imgedit"];
+handler.command = ["editimg"];
 
 module.exports = handler;
