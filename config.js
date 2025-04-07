@@ -1,22 +1,22 @@
-global.owner = ['6282147781510','6285338496697']
+global.owner = ['6282147781510','6281313849380']
 global.mods = ['6282147781510'] 
 global.prems = ['3']
 global.nameowner = 'YTTA'
 global.numberowner = '6282147781510'
-global.nomorown = '6285338496697'
+global.nomorown = '6281313849380'
 global.sgc = 'nekopoi.care'
 global.namebot = '© 𝙇𝙊𝙁𝙄 𝙄𝙈𝙐𝙏𝙏 v5.0.3 (Public Bot)'
 global.mail = 'support@tioprm.eu.org' 
 global.gc = 'https://chat.whatsapp.com/JZr68dt7KlEKiJuvEmWxoX'
-global.fotomu = 'https://pomf2.lain.la/f/cjvxzxjo.jpg'
+global.fotomu = 'https://files.catbox.moe/yj2fi0.jpg'
 global.menu = 'https://btch.pages.dev/file/ea9a7ed7ad210811c90ff.jpg' //image menu , but not work 
 global.instagram = 'https://instagram.com/erlanrahmat_14'
-global.wm = '© Chisato'
+global.wm = '© Ayyu Bot'
 global.wait = '_*Tunggu sedang di proses...*_'
 global.eror = '_*Server Error*_'
 global.stiker_wait = '*⫹⫺ Stiker sedang dibuat...*'
 global.packname = 'Made With'
-global.author = 'Chisato'
+global.author = 'Ayyu Bot'
 global.maxwarn = '2' // Peringatan maksimum
 
 //INI WAJIB DI ISI!//
